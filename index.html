@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,15 +16,13 @@
         <a href="#definisi">Definisi</a>
         <a href="#representasi">Representasi</a>
         <a href="#kombinasi">Kombinasi</a>
-        <a href="#contoh">Contoh</a>
+        <a href="#contoh">Aplikasi</a>
     </nav>
 
     <main>
         <section id="definisi" class="card fade">
             <h2>Definisi Relasi</h2>
-            <p>Relasi adalah hubungan antara elemen suatu himpunan dengan elemen himpunan lainnya. Relasi dari himpunan X ke Y merupakan 
-                <strong>subhimpunan dari hasil kali Cartesius X × Y </strong>
-            </p>
+            <p>Relasi adalah hubungan antara elemen suatu himpunan dengan elemen himpunan lainnya.</p>
             <ul>
                 <li><strong>Domain</strong>: Himpunan asal (elemen dari X)</li>
                 <li><strong>Kodomain</strong>: Himpunan kawan (elemen dari Y)</li>
@@ -32,88 +30,53 @@
             </ul>
         </section>
 
-        <section id="representasi" class="card fade">
-            <h2>Representasi Relasi</h2>
-            <p>Relasi dapat direpresentasi dengan tiga cara :</p>
-            <ol>
-                <li><strong>Tabel</strong> : menunjukkan pasangan terurut yang memenuhi kondisi relasi</li>
-                <li><strong>Matriks</strong> : menggunakan nilai 1 (terhubung) dan 0 (tidak terhubung)</li>
-                <li><strong>Graf Berarah</strong> : menggambarkan relasi sebagai panah antar simpul</li>
-            </ol>
-        </section>
-
-        <section id="kombinasi" class="card fade">
-            <h2>Kombinasi dan Komposisi Relasi</h2>
-            <p>Dua relasi dapat dikombinasikan menggunakan operasi himpunan seperti ∪ (gabungan), ∩ (irisan), dan − (selisih).</p>
-            <p><strong>Komposisi Relasi (R∘S)</strong>adalah relasi dari A ke C yang didefinisikan oleh:<br>
-            R∘S = {(a,c) | terdapat b sehingga (a,b) ∈ R dan (b,c) ∈ S}</p>
-        </section>
-
         <section id="contoh" class="card fade">
-            <h2>Contoh Soal Interaktif</h2>
-
-            <h3>1️. A adalah kelipatan dari B</h3>
-            <label>A = <input type="text" id="inputA1" placeholder="contoh: 4,6,7,9,10,11,15"></label><br>
-            <label>B = <input type="text" id="inputB1" placeholder="contoh: 2,3"></label><br>
-            <button onclick="hitungKelipatan()">Hitung Relasi</button>
-            <pre id="output"></pre>
+            <h2>Aplikasi Perhitungan Relasi</h2>
+            <p>Gunakan alat di bawah ini untuk mensimulasikan relasi, kombinasi, dan komposisi.</p>
             <hr>
 
-            <h3>2️. Domain, Range, dan Invers Relasi</h3>
-            <textarea id="inputR2" rows="3" placeholder="(1,5), (4,5), (1,4), (4,6), (3,7), (7,6)"></textarea><br>
-            <button onclick="hitungRelasi2()">Hitung</button>
-            <pre id="output1"></pre>
-            <hr>
+            <div id="step-intro" class="app-input-box">
+                <h3 class="step-title">Konfigurasi Awal</h3>
+                <label>Berapa jumlah himpunan yang terlibat?</label>
+                <select id="jumlahSetTotal" style="width:100%; padding:10px; margin-bottom:15px;">
+                    <option value="2">2 Himpunan (Relasi Tunggal / Kombinasi)</option>
+                    <option value="3">3 Himpunan (Komposisi R o S)</option>
+                </select>
+                <button onclick="setupHimpunan()">Lanjut</button>
+            </div>
 
-            <h3>3️. Relasi “x lebih kecil dari y”</h3>
-            <label>A = <input type="text" id="inputA3" placeholder="contoh: 1,2,3,4"></label><br>
-            <label>B = <input type="text" id="inputB3" placeholder="contoh: 1,3,5"></label><br>
-            <button onclick="hitungRelasi3()">Hitung Relasi</button>
-            <pre id="output2"></pre>
+            <div id="step1" class="app-input-box" style="display:none;">
+                <h3 class="step-title">Langkah 1: Detail Himpunan</h3>
+                <div id="dynamicSetInputs"></div>
+                <button onclick="buatInputElemen()">Lanjut ke Input Elemen</button>
+                <button onclick="kembaliKeIntro()" style="background:#95afc0; margin-top:10px;">Kembali</button>
+            </div>
+
+            <div id="step2" style="display:none;">
+                <div id="inputArea"></div>
+                <button onclick="kembaliKeStep1()" style="background:#95afc0; margin-top:10px;">Kembali</button>
+            </div>
+
+            <div id="navbar" style="display:none; text-align:center; margin-top:30px; border-top: 1px solid #eee; padding-top:20px;">
+                <h3 style="margin-bottom: 15px;">Lihat Hasil Representasi:</h3>
+                <div class="nav-container">
+                    <button class="nav-btn" onclick="tampilkan('definisi')">Himpunan & Pasangan</button>
+                    <button class="nav-btn" onclick="tampilkan('tabelRelasi')">Tabel Relasi</button>
+                    <button class="nav-btn" onclick="tampilkan('matriksRelasi')">Matriks</button>
+                    <button class="nav-btn" onclick="tampilkan('grafRelasi')">Graf Berarah</button>
+                    <button class="nav-btn" onclick="tampilkan('invers')">Invers (R⁻¹)</button>
+                    <button class="nav-btn" onclick="tampilkan('kombinasi')">Kombinasi & Komplemen (∪, ∩, ⊕, -, ' )</button>
+                    <button class="nav-btn" onclick="tampilkan('komposisi')">Komposisi (R o S)</button>
+                </div>
+                <div id="output"></div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>Oktober 2025 - Dibuat oleh Kelompok 3 | Matematika Diskret</p>
+        <p>Desember 2025 - Dibuat oleh Kelompok 3 | Matematika Diskret</p>
     </footer>
 
-    <script>
-    function hitungKelipatan() {
-        const a = document.getElementById("inputA1").value.split(",").map(Number);
-        const b = document.getElementById("inputB1").value.split(",").map(Number);
-        let hasil = "Relasi A kelipatan B:\n";
-        for (let j = 0; j < b.length; j++) {
-            for (let i = 0; i < a.length; i++) {
-                if (a[i] % b[j] === 0) hasil += `(${a[i]},${b[j]}), `;
-            }
-        }
-        document.getElementById("output").textContent = hasil.trimEnd().replace(/,$/, '') || "Tidak ada relasi.";
-    }
-
-    function hitungRelasi2() {
-        const input = document.getElementById("inputR2").value;
-        const pairs = [...input.matchAll(/\((\d+),\s*(\d+)\)/g)].map(m => [Number(m[1]), Number(m[2])]);
-        const domain = new Set(pairs.map(p => p[0]));
-        const range = new Set(pairs.map(p => p[1]));
-        const invers = pairs.map(([x,y]) => [y,x]);
-        let hasil = `R = { ${pairs.map(p=>`(${p[0]},${p[1]})`).join(", ")} }\n`;
-        hasil += `Domain = { ${[...domain].join(", ")} }\n`;
-        hasil += `Range = { ${[...range].join(", ")} }\n`;
-        hasil += `Invers R⁻¹ = { ${invers.map(p=>`(${p[0]},${p[1]})`).join(", ")} }`;
-        document.getElementById("output1").textContent = hasil || "Input tidak valid!";
-    }
-
-    function hitungRelasi3() {
-        const A = document.getElementById("inputA3").value.split(",").map(Number);
-        const B = document.getElementById("inputB3").value.split(",").map(Number);
-        const R = [];
-        for (const x of A) for (const y of B) if (x < y) R.push([x,y]);
-        const R_inv = R.map(([x,y]) => [y,x]);
-        let hasil = `R = { ${R.map(p=>`(${p[0]},${p[1]})`).join(", ")} }\n`;
-        hasil += `Invers R⁻¹ = { ${R_inv.map(p=>`(${p[0]},${p[1]})`).join(", ")} }`;
-        document.getElementById("output2").textContent = hasil || "Tidak ada pasangan yang memenuhi.";
-    }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
