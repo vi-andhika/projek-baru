@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Materi Relasi - Matematika Diskret</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+
 </head>
 <body>
+  <div class="bg-wrapper">
     <header class="navigasi">
         <h1>Bab 3 - Relasi</h1>
         <p>Matematika Diskret</p>
@@ -23,11 +28,28 @@
         <section id="definisi" class="card fade">
             <h2>Definisi Relasi</h2>
             <p>Relasi adalah hubungan antara elemen suatu himpunan dengan elemen himpunan lainnya.</p>
-            <ul>
-                <li><strong>Domain</strong>: Himpunan asal (elemen dari X)</li>
-                <li><strong>Kodomain</strong>: Himpunan kawan (elemen dari Y)</li>
-                <li><strong>Range</strong>: Himpunan hasil dari relasi X ke Y</li>
-            </ul>
+            <div class="term-list">
+              <div class="term-row">
+                  <span class="term-key">domain</span>
+                  <span class="term-desc">himpunan asal (elemen dari X)</span>
+              </div>
+              <div class="term-row">
+                  <span class="term-key">kodomain</span>
+                  <span class="term-desc">himpunan kawan (elemen dari Y)</span>
+              </div>
+              <div class="term-row">
+                  <span class="term-key">range</span>
+                  <span class="term-desc">himpunan hasil dari relasi X ke Y</span>
+              </div>
+            </div>
+
+            <div class="notasi-card">
+              <div class="notasi-label">// notasi formal</div>
+              <div class="notasi-line">R ⊆ A × B</div>
+              <div class="notasi-line">(a, b) ∈ R  ⟺  a R b</div>
+              <div class="notasi-line">R⁻¹ = { (b,a) | (a,b) ∈ R }</div>
+              <div class="notasi-line">S∘R = { (a,c) | ∃b : aRb ∧ bSc }</div>
+            </div>
         </section>
 
         <section id="contoh" class="card fade">
@@ -74,8 +96,10 @@
     </main>
 
     <footer>
-        <p>Desember 2025 - Dibuat oleh Kelompok 3 | Matematika Diskret</p>
+      <span class="ftr-left">Dibuat dengan usaha penuh, Desember 2025</span>
+      <span class="ftr-right">matdis · kel-3</span>
     </footer>
+  </div>
 
     <script src="script.js"></script>
 </body>

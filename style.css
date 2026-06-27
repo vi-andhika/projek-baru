@@ -1,44 +1,81 @@
 * { 
-    margin: 0; padding: 0; 
-    box-sizing: border-box; 
-    font-family: 'poppins', sans-serif;
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box; 
 }
 
-body { 
-    background-color: #f0f2ff;
-    background-image: url('math.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed; 
-    line-height: 1.6; 
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #f5f0e8;
+  line-height: 1.6; 
 }
 
 header.navigasi { 
-    background-color: #58e0ff; 
-    padding: 1rem; 
-    text-align: center; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+  background-color: #faf7f2; 
+  padding: 2rem 2rem 0; 
+  border-bottom: 2px solid #d9cfc2;
 }
 
-nav { 
-    display: flex; 
-    justify-content: center; 
-    gap: 1.5rem; background: #fff; 
-    padding: 1rem; position: sticky; 
-    top: 0; 
-    z-index: 100; 
-    border-bottom: 1px solid #eee; 
+.chapter-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    background: #e8e0d4;
+    color: #7a6e5f;
+    padding: 4px 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc4b5;
 }
 
-nav a { 
-    text-decoration: none; 
-    color: #2575fc; 
-    font-weight: 500; 
-    transition: 0.3s; 
+/* Judul utama pakai font serif */
+header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 30px;
+    font-weight: 400;           /* tidak bold — serif sudah cukup kuat */
+    color: #1c1410;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
 }
 
-nav a:hover { color: #6a11cb; }
+header p.subtitle {
+    font-size: 13px;
+    color: #9a8d7e;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+/* Nav tab bergaris bawah */
+nav {
+    display: flex;
+    gap: 0;
+    background: #faf7f2;
+    background: transparent;
+    border-top: 1px solid #d9cfc2;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    font-size: 12px;
+    font-weight: 500;
+    color: #a89b8a;
+    text-decoration: none;
+    padding: 10px 16px 10px 0;
+    margin-right: 16px;
+    border-bottom: 2px solid transparent;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+nav a:hover,
+nav a.active {
+    color: #1c1410;
+    border-bottom-color: #1c1410;   /* garis hitam, bukan biru */
+}
+
+
 
 main { 
     max-width: 900px; 
@@ -46,12 +83,27 @@ main {
     padding: 0 1rem; 
 }
 
-.card { 
-    background: #fff; 
-    padding: 2rem; 
-    border-radius: 15px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-    margin-bottom: 2rem; 
+.card {
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 8px;          /* sudut tidak terlalu bulat */
+    border: 1px solid #ddd3c3;   /* border tipis, bukan shadow */
+    margin-bottom: 1rem;
+}
+
+/* Judul section dalam card */
+.card h2, .card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: #1c1410;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 13px;
+    color: #6b5e50;
+    line-height: 1.65;
 }
 
 .app-input-box { 
@@ -62,19 +114,24 @@ main {
     margin-bottom: 20px; 
 }
 
-button { 
-    background: linear-gradient(135deg, #6a11cb, #2575fc); 
-    color: #fff; 
-    border: none; 
-    padding: 0.8rem 1.5rem; 
-    border-radius: 10px; 
-    cursor: pointer; 
-    font-weight: 600; 
-    margin-top: 10px; 
-    transition: 0.3s; 
+button {
+    background: #1c1410;         /* hitam polos — lebih opinionated */
+    color: #f5f0e8;
+    border: none;
+    border-radius: 5px;
+    padding: 9px 18px;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: opacity 0.2s;
 }
 
-button:hover { transform: scale(1.05); opacity: 0.9; }
+button:hover {
+    opacity: 0.85;
+    transform: none;             /* hilangkan scale — terkesan murahan */
+}
 
 .nav-container { 
     display: flex; 
@@ -119,16 +176,91 @@ td.highlight-rel {
 
 .matrix-row { display: flex; }
 
-.matrix-cell { 
-    width: 35px; height: 35px; 
-    display: flex; align-items: center; justify-content: center; 
-    margin: 2px; background: #d2dafd; font-weight: bold; border-radius: 4px; 
+.matrix-cell {
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    border: 1px solid #ccc4b5;
+    color: #9a8d7e;
+    background: #faf7f2;
+    margin: 2px;
 }
 
-.matrix-cell.active { 
-    background: #ffcccc; color: #d63031; border: 1px solid #ff4d4d; 
+.matrix-cell.active {
+    background: #1c1410;
+    color: #f5f0e8;
+    border-color: #1c1410;
 }
 
 .fade { animation: fadeIn 0.5s ease-in; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-footer { text-align: center; padding: 1.5rem; background: #fff; border-top: 1px solid #eee; font-size: 0.9rem; }
+footer {
+    background: #e8e0d4;
+    border-top: 1px solid #d9cfc2;
+    padding: 10px 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+}
+
+footer .ftr-left {
+    color: #a89b8a;
+    font-style: italic;
+}
+
+footer .ftr-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: #c5b9aa;
+}
+
+.term-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 7px;
+}
+
+.term-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    background: #f0ebe2;
+    color: #7a6e5f;
+    padding: 2px 8px;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.term-desc {
+    font-size: 12px;
+    color: #7a6e5f;
+    line-height: 1.5;
+}
+
+/* Wrapper dengan gambar blur di belakang */
+.bg-wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+
+.bg-wrapper::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('math.png');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(0.3);  /* blur + gelap biar tidak ganggu */
+    z-index: 0;
+}
+
+main, header, nav, footer {
+    position: relative;
+    z-index: 1;           /* konten di atas background blur */
+}
